@@ -1,0 +1,247 @@
+[
+  {
+    "asset": "fern_02",
+    "path": "public/assets/forest/fern_02/fern_02_1k.gltf",
+    "size": 6899,
+    "md5": "cf276874d37bfb73c299504a6b355b77",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/fern_02/fern_02_1k.gltf"
+  },
+  {
+    "asset": "fern_02",
+    "path": "public/assets/forest/fern_02/textures/fern_02_arm_1k.jpg",
+    "size": 280359,
+    "md5": "1bbb2b22951f450720d28e17d93a2987",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/fern_02/fern_02_arm_1k.jpg"
+  },
+  {
+    "asset": "fern_02",
+    "path": "public/assets/forest/fern_02/textures/fern_02_diff_1k.jpg",
+    "size": 315705,
+    "md5": "82c18a6cfd5ae91c37c0e078f591181c",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/fern_02/fern_02_diff_1k.jpg"
+  },
+  {
+    "asset": "fern_02",
+    "path": "public/assets/forest/fern_02/textures/fern_02_nor_gl_1k.jpg",
+    "size": 367222,
+    "md5": "43aed63dff79554f6064627515afd9d7",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/fern_02/fern_02_nor_gl_1k.jpg"
+  },
+  {
+    "asset": "fern_02",
+    "path": "public/assets/forest/fern_02/fern_02.bin",
+    "size": 176176,
+    "md5": "c061e9255f7d36ae9ce0e92ef3e100b2",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/fern_02/fern_02.bin"
+  },
+  {
+    "asset": "fern_02",
+    "path": "public/assets/forest/fern_02/textures/fern_02_alpha_1k.png",
+    "size": 114589,
+    "md5": "1421e5e36946c23a7ddcc907de89025c",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/fern_02/fern_02_alpha_1k.png"
+  },
+  {
+    "asset": "shrub_01",
+    "path": "public/assets/forest/shrub_01/shrub_01_1k.gltf",
+    "size": 2895,
+    "md5": "4ac1312e5ea687b321b78382f5f209c8",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/shrub_01/shrub_01_1k.gltf"
+  },
+  {
+    "asset": "shrub_01",
+    "path": "public/assets/forest/shrub_01/textures/shrub_01_nor_gl_1k.jpg",
+    "size": 746497,
+    "md5": "985fa065ed411dc49e07d564330555ac",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/shrub_01/shrub_01_nor_gl_1k.jpg"
+  },
+  {
+    "asset": "shrub_01",
+    "path": "public/assets/forest/shrub_01/shrub_01.bin",
+    "size": 5239664,
+    "md5": "baf77d162f397f43fa4737b545d73e1a",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/shrub_01/shrub_01.bin"
+  },
+  {
+    "asset": "shrub_01",
+    "path": "public/assets/forest/shrub_01/textures/shrub_01_arm_1k.jpg",
+    "size": 386309,
+    "md5": "1682705926a9fc60ab34d079564f1a9e",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/shrub_01/shrub_01_arm_1k.jpg"
+  },
+  {
+    "asset": "shrub_01",
+    "path": "public/assets/forest/shrub_01/textures/shrub_01_diff_1k.jpg",
+    "size": 502162,
+    "md5": "c5ac2665a0e2b4f11fd20b3296d62fe2",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/shrub_01/shrub_01_diff_1k.jpg"
+  },
+  {
+    "asset": "shrub_01",
+    "path": "public/assets/forest/shrub_01/textures/shrub_01_alpha_1k.png",
+    "size": 132597,
+    "md5": "5ed0301c1bf12c291f183563a2b8c370",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/shrub_01/shrub_01_alpha_1k.png"
+  },
+  {
+    "asset": "searsia_lucida",
+    "path": "public/assets/forest/searsia_lucida/searsia_lucida_1k.gltf",
+    "size": 31443,
+    "md5": "befd961f4f139131eda7dfca952e8d78",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/searsia_lucida/searsia_lucida_1k.gltf"
+  },
+  {
+    "asset": "searsia_lucida",
+    "path": "public/assets/forest/searsia_lucida/searsia_lucida.bin",
+    "size": 17913396,
+    "md5": "aa4c42ee903a3ac22d53386d82480e6d",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/searsia_lucida/searsia_lucida.bin"
+  },
+  {
+    "asset": "searsia_lucida",
+    "path": "public/assets/forest/searsia_lucida/textures/searsia_lucida_nor_gl_1k.jpg",
+    "size": 793264,
+    "md5": "a1e95f7d4cb702b8c6ddfedaafbadcc5",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/searsia_lucida/searsia_lucida_nor_gl_1k.jpg"
+  },
+  {
+    "asset": "searsia_lucida",
+    "path": "public/assets/forest/searsia_lucida/textures/searsia_lucida_diff_1k.jpg",
+    "size": 498655,
+    "md5": "d41a7089a41122ddc4edc96288105ecd",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/searsia_lucida/searsia_lucida_diff_1k.jpg"
+  },
+  {
+    "asset": "searsia_lucida",
+    "path": "public/assets/forest/searsia_lucida/textures/searsia_lucida_arm_1k.jpg",
+    "size": 580075,
+    "md5": "979fb34427cc5b5580ce89feaff65ef9",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/searsia_lucida/searsia_lucida_arm_1k.jpg"
+  },
+  {
+    "asset": "searsia_lucida",
+    "path": "public/assets/forest/searsia_lucida/textures/searsia_lucida_alpha_1k.png",
+    "size": 54408,
+    "md5": "dd64ebe2b0c5cabf6b8eb2e11df1c4a0",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/searsia_lucida/searsia_lucida_alpha_1k.png"
+  },
+  {
+    "asset": "wood_table",
+    "path": "public/assets/forest/wood-color.jpg",
+    "size": 987969,
+    "md5": "45af5766b300f7e940ee8984c5fabd4f",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_table/wood_table_diff_1k.jpg"
+  },
+  {
+    "asset": "wood_table",
+    "path": "public/assets/forest/wood-normal.jpg",
+    "size": 625535,
+    "md5": "c4310c772339e00650ab23c36a2775f6",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_table/wood_table_nor_gl_1k.jpg"
+  },
+  {
+    "asset": "wood_table",
+    "path": "public/assets/forest/wood-roughness.jpg",
+    "size": 618983,
+    "md5": "1bfcd8d3149397dad1c7a534e0eee765",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_table/wood_table_rough_1k.jpg"
+  },
+  {
+    "asset": "forest_ground_04",
+    "path": "public/assets/forest/ground-color.jpg",
+    "size": 1113899,
+    "md5": "6ad9df4d731a238299806f739a26af83",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_ground_04/forest_ground_04_diff_1k.jpg"
+  },
+  {
+    "asset": "forest_ground_04",
+    "path": "public/assets/forest/ground-normal.jpg",
+    "size": 1326812,
+    "md5": "a010a0802c2d9a930c6f00d3b1f196d2",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_ground_04/forest_ground_04_nor_gl_1k.jpg"
+  },
+  {
+    "asset": "island_tree_02",
+    "path": "public/assets/forest/island_tree_02/island_tree_02_1k.gltf",
+    "size": 8545,
+    "md5": "825057164e987894cbfc6c462977fa71",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/island_tree_02/island_tree_02_1k.gltf"
+  },
+  {
+    "asset": "island_tree_02",
+    "path": "public/assets/forest/island_tree_02/textures/island_tree_02_nor_gl_1k.jpg",
+    "size": 1157226,
+    "md5": "d8b8bc86de9934a743fc9b0a5470e695",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/island_tree_02/island_tree_02_nor_gl_1k.jpg"
+  },
+  {
+    "asset": "island_tree_02",
+    "path": "public/assets/forest/island_tree_02/textures/island_tree_02_diff_1k.jpg",
+    "size": 738738,
+    "md5": "b7435527d9628527ce47d89fc1468e9a",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/island_tree_02/island_tree_02_diff_1k.jpg"
+  },
+  {
+    "asset": "island_tree_02",
+    "path": "public/assets/forest/island_tree_02/textures/island_tree_02_arm_1k.jpg",
+    "size": 688305,
+    "md5": "e487f91bcb37a2a1109ef6234f1db27e",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/island_tree_02/island_tree_02_arm_1k.jpg"
+  },
+  {
+    "asset": "island_tree_02",
+    "path": "public/assets/forest/island_tree_02/textures/island_tree_02_leaves_nor_gl_1k.jpg",
+    "size": 379443,
+    "md5": "a08ffb98b5ffb7dfa682e05a1639c642",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/island_tree_02/island_tree_02_leaves_nor_gl_1k.jpg"
+  },
+  {
+    "asset": "island_tree_02",
+    "path": "public/assets/forest/island_tree_02/textures/island_tree_02_leaves_diff_1k.jpg",
+    "size": 191886,
+    "md5": "1356cbb5a5dd1318f9f2a01eddbf03e1",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/island_tree_02/island_tree_02_leaves_diff_1k.jpg"
+  },
+  {
+    "asset": "island_tree_02",
+    "path": "public/assets/forest/island_tree_02/textures/island_tree_02_leaves_arm_1k.jpg",
+    "size": 489476,
+    "md5": "27b06c4a53ff115ed7d51ee94e417257",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/island_tree_02/island_tree_02_leaves_arm_1k.jpg"
+  },
+  {
+    "asset": "island_tree_02",
+    "path": "public/assets/forest/island_tree_02/textures/island_tree_02_branches_nor_gl_1k.jpg",
+    "size": 819101,
+    "md5": "789084affb01f4a22290a848558f5e12",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/island_tree_02/island_tree_02_branches_nor_gl_1k.jpg"
+  },
+  {
+    "asset": "island_tree_02",
+    "path": "public/assets/forest/island_tree_02/textures/island_tree_02_branches_diff_1k.jpg",
+    "size": 528304,
+    "md5": "7792907fe2b2b748c129a2384192a579",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/island_tree_02/island_tree_02_branches_diff_1k.jpg"
+  },
+  {
+    "asset": "island_tree_02",
+    "path": "public/assets/forest/island_tree_02/textures/island_tree_02_branches_arm_1k.jpg",
+    "size": 484806,
+    "md5": "5b6f5b3838f4a8f60fea14fa3a3fef9f",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/island_tree_02/island_tree_02_branches_arm_1k.jpg"
+  },
+  {
+    "asset": "island_tree_02",
+    "path": "public/assets/forest/island_tree_02/island_tree_02.bin",
+    "size": 40686576,
+    "md5": "7fa9d6ee752b670cabb65053a5c6395b",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/island_tree_02/island_tree_02.bin"
+  },
+  {
+    "asset": "island_tree_02",
+    "path": "public/assets/forest/island_tree_02/textures/island_tree_02_leaves_alpha_1k.png",
+    "size": 57438,
+    "md5": "5ad9fb9a06e70c069bd3d3ba23577375",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_02/island_tree_02_leaves_alpha_1k.png"
+  }
+]

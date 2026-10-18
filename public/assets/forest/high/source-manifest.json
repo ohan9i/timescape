@@ -1,0 +1,82 @@
+[
+  {
+    "asset": "kloofendal_overcast_puresky",
+    "path": "public/assets/forest/high/sky-overcast-2k.hdr",
+    "size": 4335717,
+    "md5": "26462123fc5ce757a331553d05e4db37",
+    "sha256": "312b1b04b7f10057a4f1418abc59d1166c8933cc93fc72051502edaf8d6b2fcd",
+    "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/kloofendal_overcast_puresky_2k.hdr",
+    "retrieved": "2026-10-18",
+    "license": "CC0-1.0"
+  },
+  {
+    "asset": "kloofendal_overcast_puresky",
+    "path": "public/assets/forest/high/sky-overcast-1k.hdr",
+    "size": 1174053,
+    "md5": "d5c53f6432193893e7dc17eb65e67409",
+    "sha256": "5f98aa01d43a49cd899299751a978b3e5559a76300198b5dd2d9c68ecc4ad130",
+    "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/kloofendal_overcast_puresky_1k.hdr",
+    "retrieved": "2026-10-18",
+    "license": "CC0-1.0"
+  },
+  {
+    "asset": "wood_table",
+    "path": "public/assets/forest/high/wood-color-2k.jpg",
+    "size": 3954552,
+    "md5": "767c1f81d6398aaf9a09353b5d12682d",
+    "sha256": "abf40084777a3abdb8136ea8b643de40ec9bae4b36c865a0206badb1cacd07a7",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/wood_table/wood_table_diff_2k.jpg",
+    "retrieved": "2026-10-18",
+    "license": "CC0-1.0"
+  },
+  {
+    "asset": "island_tree_02",
+    "path": "public/assets/forest/high/tree-bark-color-2k.jpg",
+    "size": 2684467,
+    "md5": "1593cf55910abff0a418b2799870471a",
+    "sha256": "2ca2706adc5bde6bc46fa4a4680041a1797cf6684a31629259559935a97e0057",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/island_tree_02/island_tree_02_diff_2k.jpg",
+    "retrieved": "2026-10-18",
+    "license": "CC0-1.0"
+  },
+  {
+    "asset": "island_tree_02",
+    "path": "public/assets/forest/high/tree-bark-normal-2k.jpg",
+    "size": 4339456,
+    "md5": "e5e741ee0d2b5299893ddef2952e4c55",
+    "sha256": "3b088058cd9c8759f1ee223fad90f860257f574ae2ba7401cd4982c687b853cf",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/island_tree_02/island_tree_02_nor_gl_2k.jpg",
+    "retrieved": "2026-10-18",
+    "license": "CC0-1.0"
+  },
+  {
+    "asset": "island_tree_02",
+    "path": "public/assets/forest/high/tree-leaves-color-2k.jpg",
+    "size": 661175,
+    "md5": "9898a7bf79fe6214f7ca8c3b139c4116",
+    "sha256": "e5c56ca13525aed76572852da5f69ae87cbee9e15abe2e1eff23adf92975f14a",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/island_tree_02/island_tree_02_leaves_diff_2k.jpg",
+    "retrieved": "2026-10-18",
+    "license": "CC0-1.0"
+  },
+  {
+    "asset": "island_tree_02",
+    "path": "public/assets/forest/high/tree-leaves-normal-2k.jpg",
+    "size": 1378585,
+    "md5": "b7d1e6306288a64119e1d17dae3c272d",
+    "sha256": "efa74b8b59a7466a295bf210505560002990183817b6c33663f3ec0dd438dd73",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/island_tree_02/island_tree_02_leaves_nor_gl_2k.jpg",
+    "retrieved": "2026-10-18",
+    "license": "CC0-1.0"
+  },
+  {
+    "asset": "island_tree_02",
+    "path": "public/assets/forest/high/tree-leaves-alpha-2k.png",
+    "size": 139077,
+    "md5": "063774afef8fe1d35ce52d56bf41bf81",
+    "sha256": "30c36ae0d9023400035f0af9d336ed5f73a84bf8a88c8e2bec8faa07d725992b",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/island_tree_02/island_tree_02_leaves_alpha_2k.png",
+    "retrieved": "2026-10-18",
+    "license": "CC0-1.0"
+  }
+]

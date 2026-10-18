@@ -1,0 +1,53 @@
+{
+  "bytes": 10873640,
+  "reports": [
+    {
+      "level": "island_tree_02_NEAR",
+      "material": "island_tree_02",
+      "sourceTris": 27298,
+      "tris": 27298,
+      "error": 0,
+      "vertices": 15219
+    },
+    {
+      "level": "island_tree_02_NEAR",
+      "material": "island_tree_02_leaves",
+      "sourceTris": 714744,
+      "tris": 95000,
+      "error": 0.0011187380878254771,
+      "vertices": 150970
+    },
+    {
+      "level": "island_tree_02_NEAR",
+      "material": "island_tree_02_branches",
+      "sourceTris": 330171,
+      "tris": 41276,
+      "error": 0.0013809254160150886,
+      "vertices": 38260
+    },
+    {
+      "level": "island_tree_02_FAR",
+      "material": "island_tree_02",
+      "sourceTris": 27298,
+      "tris": 6000,
+      "error": 0.0019527329131960869,
+      "vertices": 3705
+    },
+    {
+      "level": "island_tree_02_FAR",
+      "material": "island_tree_02_leaves",
+      "sourceTris": 714744,
+      "tris": 18000,
+      "error": 0.0031643386464565992,
+      "vertices": 47542
+    },
+    {
+      "level": "island_tree_02_FAR",
+      "material": "island_tree_02_branches",
+      "sourceTris": 330171,
+      "tris": 9840,
+      "error": 0.002929655136540532,
+      "vertices": 10075
+    }
+  ]
+}
