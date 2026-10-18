@@ -47,7 +47,7 @@ export function createWorld():WorldState{
 export function fireflyActivity(hour:number,season:number,wet=0){
  const w=seasonWeights(season),h=hour<6?hour+24:hour
  const fade=(a:number,b:number,x:number)=>{const t=clamp((x-a)/(b-a));return t*t*(3-2*t)}
- return fade(16.8,19.2,h)*(1-fade(26,29.5,h))*(w[0]*.6+w[1]+w[2]*.3)*(1-clamp(wet)*.35)
+ return fade(16.8,19.2,h)*(1-fade(26,29.5,h))*(w[0]*.6+w[1]+w[2]*.3+w[3]*.85)*(1-clamp(wet)*.35)
 }
 export function seasonWeights(progress: number) {
   const weights = [0, 0, 0, 0]
