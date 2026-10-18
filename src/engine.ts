@@ -16,7 +16,6 @@ export interface WorldState {
   playbackMode: 'paused' | 'playing'
   timeScale: number
   seasonCycleMinutes: number
-  focusPlayback: 'hold' | 'slow'
   windStrength: number
   quality: RenderQuality
   reducedMotion: boolean
@@ -37,13 +36,13 @@ export function calendarState(virtualTime: number) {
 export function setSeason(state:WorldState,progress:number){state.seasonProgress=clamp(progress,0,.999999)}
 export function setTimeOfDay(state:WorldState,hour:number){state.timeOfDay=clamp(hour,0,23+59/60)}
 export function advanceWorld(state:WorldState,elapsedSeconds:number){
- if(state.playbackMode!=='playing'||(state.isFocusMode&&state.focusPlayback==='hold'))return
- const dt=clamp(elapsedSeconds,0,.1),speed=state.isFocusMode?12:clamp(state.timeScale,1,960)
+ if(state.playbackMode!=='playing')return
+ const dt=clamp(elapsedSeconds,0,.1),speed=clamp(state.timeScale,1,960)
  state.timeOfDay=(state.timeOfDay+dt*speed/3600)%24
  if(state.cycleSeasons)state.seasonProgress=(state.seasonProgress+dt/(clamp(state.seasonCycleMinutes,6,120)*60))%1
 }
 export function createWorld():WorldState{
- return {timeOfDay:8+20/60,seasonProgress:.297,cycleSeasons:true,playbackMode:'paused',timeScale:60,seasonCycleMinutes:24,focusPlayback:'hold',windStrength:.25,quality:'auto',weather:'clear',rainStrength:.6,isFocusMode:false,reducedMotion:typeof matchMedia!=='undefined'&&matchMedia('(prefers-reduced-motion: reduce)').matches}
+ return {timeOfDay:8+20/60,seasonProgress:.297,cycleSeasons:true,playbackMode:'paused',timeScale:60,seasonCycleMinutes:24,windStrength:.25,quality:'auto',weather:'clear',rainStrength:.6,isFocusMode:false,reducedMotion:typeof matchMedia!=='undefined'&&matchMedia('(prefers-reduced-motion: reduce)').matches}
 }
 export function fireflyActivity(hour:number,season:number,wet=0){
  const w=seasonWeights(season),h=hour<6?hour+24:hour

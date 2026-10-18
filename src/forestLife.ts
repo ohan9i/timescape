@@ -12,12 +12,12 @@ export class ForestLife{
  readonly birds:THREE.Mesh<THREE.InstancedBufferGeometry,THREE.ShaderMaterial>
  readonly fireflies:THREE.Points<THREE.BufferGeometry,THREE.ShaderMaterial>
  constructor(private scene:THREE.Scene,shared:LifeShared,mobile:boolean){
-  const count=mobile?26:55,positions=new Float32Array(count*3),seeds=new Float32Array(count)
-  for(let i=0;i<count;i++){const near=i<count*.48;positions.set([(hash(i,620)-.5)*(near?8:21),.85+hash(i,621)*3.1,near?-.2-hash(i,622)*5:-5-hash(i,622)*22],i*3);seeds[i]=hash(i,623)}
+  const count=mobile?32:65,positions=new Float32Array(count*3),seeds=new Float32Array(count)
+  for(let i=0;i<count;i++){const near=i<count*.66;positions.set([(hash(i,620)-.5)*(near?8.6:21),1.35+hash(i,621)*2.5,near?.65-hash(i,622)*4.8:-5-hash(i,622)*22],i*3);seeds[i]=hash(i,623)}
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(positions,3));g.setAttribute('seed',new THREE.BufferAttribute(seeds,1))
   this.fireflies=new THREE.Points(g,new THREE.ShaderMaterial({uniforms:{uTime:shared.time,uActivity:this.glow,uMotion:this.motion,uShelter:this.shelter},transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
-   vertexShader:`uniform float uTime;uniform float uActivity;uniform float uMotion;uniform float uShelter;attribute float seed;varying float vPulse;void main(){float t=uTime*uMotion*(.32+seed*.24),p=seed*123.;vec3 q=position;q.z=mix(q.z,max(q.z,-7.),uShelter*.7);q.y=mix(q.y,.9+seed*1.4,uShelter*.7);q.x+=sin(t+p)*.43+sin(t*.41+p)*.24;q.y+=sin(t*.73+p)*.25+cos(t*1.31+p)*.09;q.z+=cos(t*.62+p)*.3;vec4 mv=modelViewMatrix*vec4(q,1.);gl_Position=projectionMatrix*mv;float blink=mix(.48,pow(.5+.5*sin(uTime*(1.1+seed*.75)+p),2.7),uMotion);vPulse=(.18+blink*.82)*uActivity*1.4;gl_PointSize=clamp((.12+seed*.10)*860./-mv.z,6.,27.);}`,
-   fragmentShader:`varying float vPulse;void main(){float r=length(gl_PointCoord-.5)*2.;float halo=exp(-r*r*5.)*.25;float core=exp(-r*r*95.);float alpha=(halo+core)*vPulse;gl_FragColor=vec4(mix(vec3(.57,.78,.12),vec3(1.6,1.4,.42),core),alpha);}`
+   vertexShader:`uniform float uTime;uniform float uActivity;uniform float uMotion;uniform float uShelter;attribute float seed;varying float vPulse;void main(){float t=uTime*uMotion*(.32+seed*.24),p=seed*123.;vec3 q=position;q.z=mix(q.z,max(q.z,-7.),uShelter*.7);q.y=mix(q.y,.9+seed*1.4,uShelter*.7);q.x+=sin(t+p)*.43+sin(t*.41+p)*.24;q.y+=sin(t*.73+p)*.25+cos(t*1.31+p)*.09;q.z+=cos(t*.62+p)*.3;vec4 mv=modelViewMatrix*vec4(q,1.);gl_Position=projectionMatrix*mv;float blink=mix(.48,pow(.5+.5*sin(uTime*(1.1+seed*.75)+p),2.7),uMotion);vPulse=(.22+blink*.78)*uActivity*2.1;gl_PointSize=clamp((.12+seed*.10)*860./-mv.z,7.,30.);}`,
+   fragmentShader:`varying float vPulse;void main(){float r=length(gl_PointCoord-.5)*2.;if(r>1.)discard;float halo=exp(-r*r*4.5)*.34;float core=exp(-r*r*58.);float alpha=(halo+core)*vPulse;gl_FragColor=vec4(mix(vec3(.72,1.05,.14),vec3(2.3,2.1,.65),core),alpha);}`
   }));this.fireflies.frustumCulled=false;scene.add(this.fireflies)
   const bg=new THREE.InstancedBufferGeometry()
   bg.setAttribute('position',new THREE.Float32BufferAttribute([
@@ -39,7 +39,7 @@ export class ForestLife{
  update(state:WorldState,wet:number,day:number,dt:number){
   this.motion.value=damp(this.motion.value,state.reducedMotion?0:1,3,dt)
   this.shelter.value=damp(this.shelter.value,wet,1.5,dt)
-  this.glow.value=damp(this.glow.value,fireflyActivity(state.timeOfDay,state.seasonProgress,wet)*(1-day*.92),3,dt)
+  this.glow.value=damp(this.glow.value,fireflyActivity(state.timeOfDay,state.seasonProgress,wet)*(1-day*.18),3,dt)
   this.fireflies.visible=this.glow.value>.005
   this.birds.visible=day>.22&&wet<.65&&!state.reducedMotion
  }
