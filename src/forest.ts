@@ -4,6 +4,7 @@ import type {GLTF} from 'three/addons/loaders/GLTFLoader.js'
 import {HDRLoader} from 'three/addons/loaders/HDRLoader.js'
 import {skyFragment} from './sky'
 import {makeBoundBook} from './deskObjects'
+import {makeStudyCorner} from './studyCorner'
 import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js'
 import {damp,seasonWeights} from './engine'
 import type {WorldState} from './engine'
@@ -65,7 +66,7 @@ function foliageMaterial(source:THREE.MeshStandardMaterial,shared:Shared,kind:'l
  return {material:m,depth}
 }
 
-function forestFloor(x:number,z:number){return -.55+Math.sin(x*.13+z*.07)*.23+fbm(x*.09+20,z*.08+10,3)*.9+Math.max(0,-z-12)*.035+Math.max(0,-z-40)*.035+fbm(x*.028+41,z*.025+14,3)*Math.min(5,Math.max(0,-z-25)*.08)}
+function forestFloor(x:number,z:number){const bank=Math.exp(-Math.pow((x+5)/5,2)-Math.pow((z+12)/13,2))*.68;return -.55+bank+Math.sin(x*.13+z*.07)*.23+fbm(x*.09+20,z*.08+10,3)*.9+Math.max(0,-z-12)*.035+Math.max(0,-z-40)*.035+fbm(x*.028+41,z*.025+14,3)*Math.min(5,Math.max(0,-z-25)*.08)}
 function woodGrain(){
  const c=document.createElement('canvas');c.width=512;c.height=256;const cx=c.getContext('2d')!;cx.fillStyle='#403328';cx.fillRect(0,0,512,256)
  for(let y=0;y<256;y++){const n=hash(y,36);cx.strokeStyle=`rgba(${95+n*40},${66+n*22},${39+n*16},${.03+n*.14})`;cx.beginPath();for(let x=0;x<512;x+=8){const yy=y+Math.sin(x*.012+y*.031)*1.2; x?cx.lineTo(x,yy):cx.moveTo(x,yy)}cx.stroke()}
@@ -83,6 +84,8 @@ export class ForestWindow{
  private sun=new THREE.DirectionalLight('#fff1cf',3.3)
  private moon=new THREE.DirectionalLight('#9cbbeb',.2)
  private roomFill=new THREE.PointLight('#d6b37b',0,9,2)
+ private studyCorner:ReturnType<typeof makeStudyCorner>|undefined
+ private windowReflection:THREE.Mesh<THREE.PlaneGeometry,THREE.ShaderMaterial>|undefined
  private skyMaterial:THREE.ShaderMaterial
  private groundMaterial:THREE.MeshStandardMaterial
  private contact=contactField()
@@ -125,12 +128,12 @@ export class ForestWindow{
   this.renderer.shadowMap.enabled=true;this.renderer.shadowMap.type=THREE.PCFSoftShadowMap;this.renderer.shadowMap.autoUpdate=false
   this.renderer.domElement.setAttribute('aria-label','숲을 마주한 목재 창가. 실제 입체 식생과 고사리가 바람·계절·빛에 반응하는 Forest Window')
   this.renderer.domElement.addEventListener('webglcontextlost',this.contextLost);container.append(this.renderer.domElement)
-  this.camera.position.set(0,1.72,5.6);this.camera.lookAt(0,2.24,-15)
+  this.camera.position.set(0,1.86,6.2);this.camera.lookAt(0,1.0,-12)
   this.scene.background=new THREE.Color('#aebcaf');this.scene.fog=new THREE.Fog('#b5c1c2',22,155)
   this.sun.position.set(-9,16,9);this.sun.target.position.set(0,0,-8);this.sun.castShadow=true
   this.sun.shadow.mapSize.set(this.mobile?768:1024,this.mobile?768:1024)
   Object.assign(this.sun.shadow.camera,{left:-18,right:18,top:20,bottom:-18,near:1,far:85});this.sun.shadow.bias=-.00015;this.sun.shadow.normalBias=.012;this.sun.shadow.radius=2
-  this.moon.target.position.set(0,1,-10);this.roomFill.position.set(-2,2.5,3)
+  this.moon.target.position.set(0,1,-10);this.roomFill.position.set(-1.3,1.7,3.0)
   this.scene.add(this.hemisphere,this.sun,this.sun.target,this.moon,this.moon.target,this.roomFill)
   this.pmrem=new THREE.PMREMGenerator(this.renderer);const env=new RoomEnvironment();this.environment=this.pmrem.fromScene(env,.04);env.dispose();this.scene.environment=this.environment.texture;this.scene.environmentIntensity=.12
 
@@ -194,7 +197,7 @@ export class ForestWindow{
    if(z>-31)mid.push(p);else far.push(p)
   }
   for(let i=0;i<(this.mobile?30:55);i++){
-   const z=-3-hash(i,91)*28,x=(hash(i,92)-.5)*28
+   const z=-3-hash(i,91)*28,x=(hash(i,92)-.5)*28+Math.sin(z*.25)*2
    if(Math.abs(x)<1.8&&z>-7)continue
    under.push({x,y:forestFloor(x,z),z,scale:.5+hash(i,93)*.8,angle:hash(i,94)*6.28,stretch:.8})
   }
@@ -206,7 +209,7 @@ export class ForestWindow{
   const backdrop:Placement[]=[]
   for(let i=0;i<(this.mobile?55:80);i++){const x=(hash(i,220)-.5)*50,z=-16-hash(i,221)*34;backdrop.push({x,y:forestFloor(x,z),z,scale:6.5+hash(i,222)*4.5,angle:hash(i,223)*6.28})}
   this.addAsset(tree,this.mobile?6:5,backdrop,treeAlpha,'tree',false)
-  const forestNear:Placement[]=[{x:-4.6,y:forestFloor(-4.6,-1),z:-1,scale:1.8,stretch:1.0,angle:.75},{x:4.7,y:forestFloor(4.7,-4.2),z:-4.2,scale:2.2,stretch:1.0,angle:1.3}]
+  const forestNear:Placement[]=[{x:-4.9,y:forestFloor(-4.9,-1.5),z:-1.5,scale:1.85,stretch:1.05,angle:.75},{x:5.7,y:forestFloor(5.7,-5.2),z:-5.2,scale:2.1,stretch:1.1,angle:1.3}]
   const forestMid:Placement[]=[{x:-5,y:forestFloor(-5,-22),z:-22,scale:3.2,stretch:1.1,angle:2.8},{x:11,y:forestFloor(11,-28),z:-28,scale:3.5,stretch:1.0,angle:1.65},{x:0,y:forestFloor(0,-36),z:-36,scale:4.0,stretch:1.05,angle:-.4}]
   const forestFar:Placement[]=[]
   for(let i=0;i<(this.mobile?7:10);i++){const x=(hash(i,187)-.5)*100,z=-42-hash(i,188)*48;forestFar.push({x,y:forestFloor(x,z),z,scale:3.8+hash(i,189)*3,stretch:1.+hash(i,190)*.25,angle:hash(i,191)*6.28})}
@@ -216,7 +219,7 @@ export class ForestWindow{
   this.addAsset(island,1,forestFar,islandAlpha,'tree',false)
   const ferns:Placement[][]=[[],[],[],[]]
   for(let i=0;i<(this.mobile?135:230);i++){
-   const x=(hash(i,48)-.5)*30,z=-.5-hash(i,49)*25
+   const cluster=Math.floor(i/15),x=(hash(cluster,48)-.5)*27+(hash(i,46)-.5)*4.5,z=-1-hash(cluster,49)*23+(hash(i,47)-.5)*3
    if(Math.abs(x)<1.8&&z>-5&&hash(i,50)>.2)continue
    ferns[i%4].push({x,y:forestFloor(x,z)+.01,z,scale:1.0+hash(i,51)*2.4,angle:hash(i,52)*6.28})
   }
@@ -259,26 +262,31 @@ export class ForestWindow{
  private box(w:number,h:number,d:number,x:number,y:number,z:number,material:THREE.Material){const mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material);mesh.position.set(x,y,z);mesh.castShadow=true;mesh.receiveShadow=true;this.scene.add(mesh);return mesh}
  private makeRoom(){
   const grain=woodGrain();this.textures.add(grain)
-  const frame=new THREE.MeshStandardMaterial({color:'#292b24',map:grain,roughness:.76,metalness:.02})
-  const wood=new THREE.MeshStandardMaterial({color:'#b9a28a',map:grain,roughness:.68})
+  const frame=new THREE.MeshStandardMaterial({color:'#71634d',map:grain,roughness:.66,metalness:.02})
+  const wood=new THREE.MeshStandardMaterial({color:'#d3b995',map:grain,roughness:.60})
   // Recessed timber reveal: real geometry frames the forest, never a background card.
   for(const x of [-3.48,3.48]){const side=x<0?'left':'right';this.box(.22,5.1,.48,x,2.38,1.38,frame).name=`window-${side}-post`;this.box(.065,5.1,.075,x+(x<0?.15:-.15),2.38,1.10,wood).name=`window-${side}-trim`}
   this.box(7.22,.20,.52,0,4.30,1.38,frame).name='window-lintel'
-  this.box(7.24,.16,.65,0,.70,1.38,frame).name='window-sill'
+  this.box(7.24,.10,.40,0,.72,1.38,frame).name='window-sill'
   const wall=new THREE.MeshStandardMaterial({color:'#31392e',roughness:1})
   this.box(3,8,.3,-5.14,2.4,1.50,wall).name='window-left-wall';this.box(3,8,.3,5.14,2.4,1.50,wall).name='window-right-wall'
   const desk=this.box(10,.13,3.3,0,.61,3.70,wood);desk.name='desktop'
-  this.box(10,.20,1.20,0,.61,1.80,frame)
-  this.box(10,.04,.045,0,.69,2.12,frame)
-  // A quiet, closed notebook and ceramic cup. Both sit at the periphery.
-  const book=makeBoundBook();this.scene.add(book.group);book.textures.forEach(t=>this.textures.add(t))
-  const mug=new THREE.Group();mug.position.set(1.4,.70,3.0)
-  const ceramic=new THREE.MeshPhysicalMaterial({color:'#b1a793',roughness:.29,clearcoat:.22,clearcoatRoughness:.2})
+  this.box(10,.07,.36,0,.65,1.8,frame)
+  this.box(10,.018,.025,0,.685,2.0,frame)
+  const book=makeBoundBook();book.group.position.set(-1.98,.682,2.62);book.group.rotation.y=.12;book.group.scale.setScalar(.9);this.scene.add(book.group);book.textures.forEach(t=>this.textures.add(t))
+  this.studyCorner=makeStudyCorner(this.shared.time,this.shared.day);this.scene.add(this.studyCorner.group);this.studyCorner.textures.forEach(t=>this.textures.add(t))
+  const mug=new THREE.Group();mug.position.set(1.08,.68,2.64)
+  const ceramic=new THREE.MeshPhysicalMaterial({color:'#d3c8ac',roughness:.24,clearcoat:.3,clearcoatRoughness:.23})
   const body=new THREE.Mesh(new THREE.CylinderGeometry(.10,.085,.19,40,1,true),ceramic);body.position.y=.095;body.castShadow=true;mug.add(body)
   const inner=new THREE.Mesh(new THREE.CylinderGeometry(.091,.077,.17,40,1,true),ceramic);inner.position.y=.095;inner.material=ceramic.clone();inner.material.side=THREE.BackSide;mug.add(inner)
   const rim=new THREE.Mesh(new THREE.TorusGeometry(.099,.008,8,40),ceramic);rim.rotation.x=Math.PI/2;rim.position.y=.189;mug.add(rim)
   const coffee=new THREE.Mesh(new THREE.CircleGeometry(.09,32),new THREE.MeshStandardMaterial({color:'#1d1710',roughness:.19}));coffee.rotation.x=-Math.PI/2;coffee.position.y=.167;mug.add(coffee)
   const handle=new THREE.Mesh(new THREE.TorusGeometry(.063,.014,8,24,Math.PI*1.65),ceramic);handle.position.set(.105,.10,0);handle.rotation.z=-Math.PI*.825;mug.add(handle);this.scene.add(mug)
+  // A restrained reflection of the room lamp establishes the glass plane.
+  this.windowReflection=new THREE.Mesh(new THREE.PlaneGeometry(1,3.43),new THREE.ShaderMaterial({uniforms:{uDay:this.shared.day},transparent:true,depthWrite:false,side:THREE.DoubleSide,
+   vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+   fragmentShader:`uniform float uDay;varying vec2 vUv;void main(){vec2 p=(vUv-vec2(.27,.29))*vec2(6.,3.2);float lamp=exp(-dot(p,p)*24.);float edge=pow(abs(vUv.x-.5)*2.,12.)*.014;float trace=exp(-pow((vUv.x-.18-vUv.y*.07)*180.,2.))*.012;float alpha=lamp*(.065+(1.-uDay)*.065)+edge+trace;gl_FragColor=vec4(vec3(.93,.78,.51),alpha);}`
+  }));this.windowReflection.position.set(0,2.41,1.16);this.windowReflection.renderOrder=2;this.scene.add(this.windowReflection)
  }
  private makeParticles(){
   const count=this.mobile?160:340,positions=new Float32Array(count*3),seeds=new Float32Array(count)
@@ -295,9 +303,11 @@ export class ForestWindow{
  private resize(){
   const w=this.container.clientWidth,h=this.container.clientHeight;this.renderer.setSize(w,h);this.camera.aspect=w/h;this.camera.fov=w<h?58:49;this.camera.updateProjectionMatrix()
   // Keep the timber reveal at the viewport edges while the eye position remains fixed.
-  const half=(5.6-1.38)*Math.tan(THREE.MathUtils.degToRad(this.camera.fov*.5))*this.camera.aspect
+  const half=(this.camera.position.z-1.38)*Math.tan(THREE.MathUtils.degToRad(this.camera.fov*.5))*this.camera.aspect
   for(const side of ['left','right']){const sign=side==='left'?-1:1;this.scene.getObjectByName(`window-${side}-post`)!.position.x=sign*half;this.scene.getObjectByName(`window-${side}-trim`)!.position.x=sign*(half-.15);this.scene.getObjectByName(`window-${side}-wall`)!.position.x=sign*(half+1.66)}
   this.scene.getObjectByName('window-lintel')!.scale.x=(half*2+.5)/7.22;this.scene.getObjectByName('window-sill')!.scale.x=(half*2+.5)/7.24
+  this.windowReflection?.scale.set(half*2,1,1)
+  if(this.studyCorner){const scale=w<h?.72:1;this.studyCorner.group.scale.set(scale,1,1);this.studyCorner.group.position.x=w<h?.35:0}
   this.weather.resize(half)
   this.renderer.shadowMap.needsUpdate=true
  }
@@ -322,7 +332,8 @@ export class ForestWindow{
   this.sun.color.set('#fff1cd').lerp(new THREE.Color('#ed9b5b'),dusk*.8).lerp(new THREE.Color('#b5c9d0'),wet*.65).lerp(this.nightTint,night)
   this.moon.position.copy(moon).multiplyScalar(36).add(this.moon.target.position);this.moon.intensity=night*.10
   this.hemisphere.intensity=.64+day*(.16-wet*.14);this.hemisphere.color.set('#c3d0c1').lerp(new THREE.Color('#979eaf'),this.shared.season.value.w*.2).lerp(new THREE.Color('#9bb5d6'),night*.8).lerp(new THREE.Color('#9eafb3'),wet*.6)
-  this.hemisphere.groundColor.set('#586053');this.roomFill.intensity=night*3.2
+  this.hemisphere.groundColor.set('#586053');this.roomFill.intensity=.32+night*1.45
+  if(this.studyCorner){this.studyCorner.light.intensity=4.5+night*4.5;this.studyCorner.bulbMaterial.emissiveIntensity=1.3+night*1.7}
   this.scene.environmentIntensity=.23+day*.41
   const fog=this.scene.fog as THREE.Fog;fog.color.copy(this.bgNight).lerp(this.bgDay,day);fog.far=155;this.airDensity.value=.0055+this.shared.season.value.w*.0025+wet*.0055
   this.life.update(state,wet,day,dt)
@@ -349,6 +360,7 @@ export class ForestWindow{
  dispose(){
   this.disposed=true;this.observer.disconnect();this.renderer.domElement.removeEventListener('webglcontextlost',this.contextLost)
   this.weather.dispose();this.life.dispose()
+  this.studyCorner?.light.shadow.dispose()
   const geometry=new Set<THREE.BufferGeometry>();this.scene.traverse(o=>{if(o instanceof THREE.Mesh||o instanceof THREE.Points){geometry.add(o.geometry);(Array.isArray(o.material)?o.material:[o.material]).forEach((m:THREE.Material)=>this.materials.add(m))}})
   geometry.forEach(g=>g.dispose());this.disposeSources();this.materials.forEach(m=>m.dispose());this.textures.forEach(t=>t.dispose());this.environment.dispose();this.pmrem.dispose();this.sun.shadow.dispose();this.renderer.dispose();this.renderer.domElement.remove()
   void this.assetPromise

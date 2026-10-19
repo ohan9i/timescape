@@ -17,3 +17,115 @@
 .season-flow-label{font-size:6px;letter-spacing:1.3px;color:#e2e6d378}.calendar-header{letter-spacing:1.8px}@media(max-width:760px){.season-flow-label{font-size:5px;letter-spacing:.9px}}
 
 .speed-options{flex-wrap:wrap}
+
+/* Forest study: one persistent session, one landscape console. */
+:root{--ink:#f2efdf;--muted:#c6cabc;--sage:#d2ddba;--line:#e6e7cf26;--surface:#202a24f5;font-family:'Noto Sans KR',sans-serif;background:#1d2721}
+.app{background:#1d2721}
+.scene-forest .scene-shade{background:linear-gradient(180deg,#101a1a45,transparent 22%,transparent 69%,#12181115)}
+.topbar{left:32px;right:32px;top:25px;height:38px;justify-content:flex-start;gap:24px}
+.brand{font-size:23px;letter-spacing:-1px;color:var(--ink);font-weight:500}
+.brand svg{width:30px;height:30px}
+.brand sup{font-size:7px}
+.scene-forest .place-caption{position:static;display:flex;align-items:center;gap:10px;border-left:1px solid var(--line);padding-left:24px;text-shadow:0 2px 12px #0b130ddd}
+.scene-forest .place-caption h1{font-family:Georgia,serif;font-size:17px;font-weight:400;letter-spacing:-.3px;margin:0}
+.place-caption>span:last-child{font-size:10px;letter-spacing:.15px;color:#eeeedeaf}
+.live-dot{display:block;width:5px;height:5px;flex-shrink:0;background:#c4cfb3}
+.top-actions{gap:4px;margin-left:auto}
+.icon-button{width:36px;height:36px;border-radius:9px;color:#e5e8d8d1}
+.icon-button:hover,.icon-button.active{background:#e4e9d51a;color:#fffcec}
+.focus-button{font-size:11px;font-weight:400;gap:8px;border:1px solid #eeedcf35;border-radius:8px;padding:9px 12px;margin-left:10px;background:#1a261c80}
+.focus-button kbd{font-size:9px;margin-left:6px;line-height:1.2;padding:2px 4px}
+.session-card{position:absolute;right:32px;top:91px;z-index:7;width:224px;padding:18px 19px 12px;background:linear-gradient(140deg,#273229f2,#1b241ff2);border:1px solid #e3dfbd35;border-radius:13px;box-shadow:0 8px 32px #0b130e2e,inset 0 1px #fff8df09;opacity:0;transition:opacity .65s,background .3s;pointer-events:none}
+.ready .session-card{opacity:1;pointer-events:auto}
+.session-heading{display:flex;align-items:center;gap:7px;color:#d2d8c5;font-size:10px;letter-spacing:.2px}
+.session-heading>button{margin-left:auto;display:flex;padding:2px;color:#d7dec29c}
+.session-heading>button:hover{color:var(--ink)}
+.session-indicator{display:block;width:5px;height:5px;background:#afb99a;border-radius:50%}
+.is-running .session-indicator{background:#dae8af;box-shadow:0 0 9px #c7db8c38}
+.session-time{display:block;font-family:Manrope,'Segoe UI',sans-serif;font-size:55px;font-weight:400;letter-spacing:-2px;line-height:1.15;margin:10px 0 9px;color:#f5f0dc;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';white-space:nowrap}
+.session-time.long-time{font-size:39px;letter-spacing:-1px;margin-top:19px;margin-bottom:17px}
+.session-meta{display:flex;justify-content:space-between;gap:7px;align-items:center;color:#d4dac29c;font-size:9px}
+.session-meta>span:last-child{font-size:7px;letter-spacing:.9px}
+.session-progress{height:2px;border-radius:2px;background:#d4dcc31b;margin:15px 0 10px;overflow:hidden}
+.session-progress>i{display:block;height:100%;background:#d2ddba;transition:width .4s linear}
+.session-actions{display:flex;align-items:center;justify-content:space-between}
+.session-actions .icon-button{width:30px;height:30px}
+.session-toggle{display:flex;align-items:center;gap:8px;padding:7px 0;font-size:10px;color:#e2e7d2}
+.session-toggle:hover{color:#fff7da}
+.session-card.is-focus{top:32px;right:32px}
+.landscape-console{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);width:min(760px,calc(100% - 64px));display:grid;grid-template-columns:minmax(0,1fr) 106px 168px;align-items:center;gap:24px;padding:19px 24px;background:linear-gradient(125deg,#263127f5,#1a241ff5);border:1px solid #dedcc12d;border-radius:14px;box-shadow:0 14px 38px #0b120c30,inset 0 1px #fff5da08;pointer-events:auto}
+.season-dock{position:static;bottom:auto;left:auto;transform:none;width:auto;min-width:0}
+.season-status{margin:0 0 9px;gap:12px}
+.season-status>div{gap:7px}
+.season-status strong{font-family:Georgia,serif;font-size:17px;font-weight:400;letter-spacing:0}
+.season-status>div>span{font-size:10px;color:#d4dac59c;margin-left:3px}
+.season-flow-label{font-size:8px;letter-spacing:0;color:#c5cfb78f;white-space:nowrap}
+.season-range{height:27px;margin:0 5px}
+.range-track{top:13px;background:#d8dfc733}
+.range-track i{background:#d9e2bb}
+.range-track b{height:5px;background:#e3e8ce70}
+.season-range input{height:27px}
+.season-range input::-webkit-slider-thumb{width:11px;height:11px;margin-top:-5px;background:#e2e8c9;border-color:#eff1d7;box-shadow:0 0 0 4px #e1e8bf0c}
+.season-labels{margin-top:0;gap:4px}
+.season-labels button{font-size:9px;gap:5px;padding:5px 0;color:#c5cdb48c}
+.season-labels button.active{color:#f2f0d7}
+.season-labels button:hover{color:#f3f2df}
+.dial-wrap{position:static;right:auto;bottom:auto;gap:0;border-left:1px solid var(--line);padding-left:13px}
+.time-dial{width:91px;height:91px}
+.dial-center{gap:3px}
+.dial-center time{font-size:15px;letter-spacing:0;color:#edeed8}
+.dial-center>span{display:none}
+.dial-center>svg{width:12px;height:12px}
+.dial-label{font-size:6px;color:#d3d9c1a1}
+.dial-caption{font-size:8px;letter-spacing:.2px;color:#c9d2b99c;margin-top:-1px}
+.console-actions{display:flex;flex-direction:column;gap:12px;border-left:1px solid var(--line);padding-left:20px}
+.weather-toggle{display:flex;align-items:center;gap:8px;font-size:10px;color:#d6ddc6;padding:6px 0;white-space:nowrap}
+.weather-toggle.active{color:#f1e8c8}
+.playback-controls{position:static;left:auto;transform:none;gap:8px;justify-content:space-between}
+.play-toggle{gap:7px;font-size:9px;color:#e4e7cd;padding:6px 0}
+.play-toggle svg{width:12px}
+.speed-button{font-size:10px;gap:3px;padding:5px 6px;border:1px solid var(--line);border-radius:5px;color:#e4e6cf}
+.wake-controls{bottom:21px;font-size:10px;background:#1e2922c9;border:1px solid #e2e6ce29;border-radius:20px;padding:9px 16px;color:#e3e7d0;opacity:.8}
+.wake-controls:hover{opacity:1}
+.popover,.scene-forest .popover{right:32px;bottom:24px;top:auto;width:360px;padding:25px;border-radius:14px;background:#202b24fc;border-color:#dfe3c830;box-shadow:0 20px 70px #08100b66;max-height:calc(100svh - 107px)}
+.panel-scrim{background:#0c140c38;z-index:10}
+.panel-heading{margin-bottom:25px}
+.panel-heading .eyebrow{font-size:8px;letter-spacing:1.2px;color:#c2ceb1a1}
+.panel-heading h2{font-family:Georgia,'Noto Sans KR',serif;font-size:24px;letter-spacing:-.4px;font-weight:400}
+.panel-heading .icon-button{margin:-7px -9px 0 0}
+.date-setting,.quality-setting,.setting-row>span,.motion-setting,.weather-selection>span{font-size:11px;color:#e0e4d0}
+.setting-row small{font-size:10px;color:#c9d2b4}
+.setting-note{font-size:10px;line-height:1.85;color:#c4ceb2b8}
+.speed-options{grid-template-columns:repeat(4,1fr)}
+.speed-options button{font-size:11px;padding:10px 0}
+.quality-setting select,.date-setting input{font-size:11px;background:#17271e}
+.weather-selection button{font-size:12px}
+.timer-display{font-family:Manrope,'Segoe UI',sans-serif;font-size:60px;color:#f2ecd5;letter-spacing:-2px}
+.timer-display span{font-size:11px;line-height:1.7;color:#c4ceb2}
+.timer-options button{height:40px;font-size:12px}
+.custom-timer>label,.custom-timer p{font-size:11px;line-height:1.7}
+.primary-button{font-size:12px;padding:13px 16px;border-radius:7px;background:#d9dfbf;color:#233c2c}
+.text-button{font-size:11px;padding:9px 0}
+.help-intro{font-size:13px;line-height:1.9}
+.help-item strong{font-size:12px}.help-item p{font-size:11px;line-height:1.85;color:#ccd4b9b8}.help-item>span{font-size:10px}
+.keyboard-hints{font-size:10px}.asset-credit{font-size:9px}.presets input,.preset-item>button:first-child,.preset-heading{font-size:11px}
+.toast{bottom:165px;font-size:12px;background:#233c2af5;border-radius:9px}
+.exit-focus{bottom:27px;left:32px;transform:none;font-size:11px;background:#1e2922d9;border:1px solid #e3e6ce26;border-radius:8px;padding:11px 15px;color:#e4e7d0;opacity:.9}
+.exit-focus kbd{font-size:9px}
+.focus-mode .popover{right:50%;bottom:50%;top:auto;max-height:calc(100dvh - 40px)}
+@media(min-width:1700px){.topbar{top:32px}.session-card{top:101px}.landscape-console{bottom:32px}}
+@media(max-width:1100px){
+ .topbar{left:24px;right:24px;gap:18px}.scene-forest .place-caption{padding-left:18px}.place-caption>span:last-child{display:none}
+ .session-card{right:24px;top:89px;width:208px}.session-time{font-size:52px}.landscape-console{width:min(730px,calc(100% - 48px));gap:18px;padding:17px 20px;grid-template-columns:minmax(0,1fr) 99px 156px}.season-flow-label{display:none}.popover,.scene-forest .popover{right:24px}
+}
+@media(max-width:760px){
+ .app{min-height:520px}.topbar{top:18px;left:18px;right:18px;height:34px;gap:10px}.brand{font-size:21px;gap:6px}.brand svg{width:26px;height:26px}.scene-forest .place-caption{display:none}.top-actions{gap:1px}.top-actions .icon-button{width:32px;height:32px}.top-actions .fullscreen-control{display:none}.focus-button{font-size:10px;padding:8px 9px;margin-left:5px;gap:6px}.focus-button kbd{display:none}
+ .session-card,.session-card.is-focus{right:18px;top:71px;width:183px;padding:14px 15px 9px;border-radius:12px}.session-card.is-focus{top:18px}.session-heading{font-size:9px}.session-time{font-size:46px;margin:8px 0}.session-time.long-time{font-size:31px;margin:16px 0}.session-meta{font-size:8px}.session-meta>span:last-child{font-size:6px;letter-spacing:.6px}.session-progress{margin:12px 0 7px}.session-toggle{font-size:10px}.session-actions .icon-button{height:28px;width:28px}
+ .landscape-console{left:18px;right:18px;bottom:18px;transform:none;width:auto;grid-template-columns:minmax(0,1fr) 86px;gap:12px 15px;padding:16px 17px 12px;border-radius:13px}
+ .season-dock{position:static;width:auto;transform:none}.season-status{margin-bottom:6px}.season-status strong{font-size:17px}.season-status>div>span{font-size:10px}.season-range,.season-range input{height:30px}.season-range .range-track{top:14px}.season-labels{gap:4px;margin-top:0}.season-labels button{font-size:8px;gap:3px;padding:5px 0}.season-labels svg{width:10px;height:10px}
+ .dial-wrap{position:static;padding-left:5px;gap:0}.time-dial{width:80px;height:80px}.dial-center time{font-size:14px}.dial-label{font-size:6px}.dial-caption{font-size:8px;letter-spacing:0}.dial-center>svg{display:block;width:11px;height:11px}
+ .console-actions{grid-column:1/-1;flex-direction:row;justify-content:space-between;align-items:center;border-left:0;border-top:1px solid var(--line);padding:10px 0 0;gap:10px}.weather-toggle{font-size:10px;padding:4px 0}.playback-controls{position:static;left:auto;transform:none;gap:14px}.play-toggle{font-size:10px;gap:6px}.speed-button{font-size:10px;padding:4px 6px}
+ .popover,.scene-forest .popover{right:14px;bottom:14px;top:auto;width:min(360px,calc(100% - 28px));max-height:calc(100svh - 84px);padding:23px}.panel-heading h2{font-size:23px}.panel-fullscreen{display:flex}.toast{bottom:220px;font-size:11px}.exit-focus{left:18px;bottom:18px;font-size:10px;padding:10px 12px}.wake-controls{bottom:18px;font-size:10px}.focus-mode .popover{right:50%;bottom:50%}
+}
+@media(max-width:380px){.session-card{width:170px}.landscape-console{left:12px;right:12px;padding:14px 13px 10px;gap:10px;grid-template-columns:minmax(0,1fr) 78px}.time-dial{width:73px;height:73px}.season-labels svg{display:none}.session-meta>span:last-child{letter-spacing:.2px}}
+@media(max-height:560px) and (min-width:761px){.topbar{top:16px}.session-card{top:69px;width:205px;padding:13px 16px 9px}.session-time{font-size:44px;margin:6px 0}.landscape-console{bottom:15px;padding:12px 20px}.time-dial{width:76px;height:76px}.season-status{margin-bottom:3px}.popover,.scene-forest .popover{bottom:15px;max-height:calc(100svh - 80px)}.exit-focus{bottom:15px}.session-card.is-focus{top:18px}}
