@@ -275,7 +275,7 @@ export class ForestWindow{
   this.box(10,.018,.025,0,.685,2.0,frame)
   const book=makeBoundBook();book.group.position.set(-1.98,.682,2.62);book.group.rotation.y=.12;book.group.scale.setScalar(.9);this.scene.add(book.group);book.textures.forEach(t=>this.textures.add(t))
   this.studyCorner=makeStudyCorner(this.shared.time,this.shared.day);this.scene.add(this.studyCorner.group);this.studyCorner.textures.forEach(t=>this.textures.add(t))
-  const mug=new THREE.Group();mug.position.set(1.08,.68,2.46)
+  const mug=new THREE.Group();mug.name='study-mug';mug.position.set(1.08,.68,2.46)
   const ceramic=new THREE.MeshPhysicalMaterial({color:'#d3c8ac',roughness:.24,clearcoat:.3,clearcoatRoughness:.23})
   const body=new THREE.Mesh(new THREE.CylinderGeometry(.10,.085,.19,40,1,true),ceramic);body.position.y=.095;body.castShadow=true;mug.add(body)
   const inner=new THREE.Mesh(new THREE.CylinderGeometry(.091,.077,.17,40,1,true),ceramic);inner.position.y=.095;inner.material=ceramic.clone();inner.material.side=THREE.BackSide;mug.add(inner)
@@ -307,7 +307,10 @@ export class ForestWindow{
   for(const side of ['left','right']){const sign=side==='left'?-1:1;this.scene.getObjectByName(`window-${side}-post`)!.position.x=sign*half;this.scene.getObjectByName(`window-${side}-trim`)!.position.x=sign*(half-.15);this.scene.getObjectByName(`window-${side}-wall`)!.position.x=sign*(half+1.66)}
   this.scene.getObjectByName('window-lintel')!.scale.x=(half*2+.5)/7.22;this.scene.getObjectByName('window-sill')!.scale.x=(half*2+.5)/7.24
   this.windowReflection?.scale.set(half*2,1,1)
-  if(this.studyCorner){const scale=w<h?.72:1;this.studyCorner.group.scale.set(scale,1,1);this.studyCorner.group.position.x=w<h?.35:0}
+  if(this.studyCorner){const portrait=w<h;this.studyCorner.group.scale.set(portrait?.72:1,1,1);this.studyCorner.group.position.set(0,0,portrait?-.35:0)}
+  const mug=this.scene.getObjectByName('study-mug'),book=this.scene.getObjectByName('bound-notebook')
+  if(mug)mug.position.set(w<h?.78:1.08,.68,w<h?2.11:2.46)
+  if(book){book.position.set(w<h?-1.03:-1.98,.682,w<h?2.1:2.62);book.scale.setScalar(w<h?.65:.9)}
   this.weather.resize(half)
   this.renderer.shadowMap.needsUpdate=true
  }
