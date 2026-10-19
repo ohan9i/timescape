@@ -7,20 +7,22 @@ export function makeStudyCorner(time:THREE.IUniform<number>, day:THREE.IUniform<
   const paperCanvas=document.createElement('canvas');paperCanvas.width=1024;paperCanvas.height=1024
   const c=paperCanvas.getContext('2d')!
   c.fillStyle='#e9dfc8';c.fillRect(0,0,1024,1024)
-  c.strokeStyle='#82918c66';c.lineWidth=2
+  c.strokeStyle='#82918c80';c.lineWidth=3
   for(let y=150;y<960;y+=37){c.beginPath();c.moveTo(70,y);c.lineTo(954,y);c.stroke()}
-  c.fillStyle='#35483e';c.font='italic 34px Georgia';c.fillText('Notes on a quiet morning',76,91)
-  c.font='23px Georgia';c.fillStyle='#44564b'
+  c.fillStyle='#35483e';c.font='italic 42px Georgia';c.fillText('The quiet hours',76,91)
+  c.font='30px Georgia';c.fillStyle='#44564b'
   const lines=['Observe. Think. Begin again.','Light / space / time','A little progress, every day.']
   lines.forEach((line,i)=>c.fillText(line,79,182+i*74))
-  c.strokeStyle='#44564b';c.lineWidth=3
+  c.strokeStyle='#44564b';c.lineWidth=7
   c.strokeRect(105,485,560,270);c.strokeRect(125,505,520,230)
   for(let i=1;i<4;i++){c.beginPath();c.moveTo(125+i*130,505);c.lineTo(125+i*130,735);c.stroke()}
   c.beginPath();c.moveTo(80,800);c.lineTo(700,800);c.moveTo(80,789);c.lineTo(80,811);c.moveTo(700,789);c.lineTo(700,811);c.stroke()
-  c.font='italic 18px Georgia';c.fillText('a place to return to',105,859)
+  c.font='italic 29px Georgia';c.fillText('a place to return to',105,859)
+  c.fillStyle='#526254'
+  for(let i=0;i<4;i++){c.fillRect(78,368+i*24,430-i*43,5)}
   const paper=new THREE.CanvasTexture(paperCanvas);paper.colorSpace=THREE.SRGBColorSpace;paper.anisotropy=8;textures.push(paper)
   const cream=new THREE.MeshStandardMaterial({color:'#ddd2b8',roughness:.94})
-  const inkPaper=new THREE.MeshStandardMaterial({map:paper,roughness:.94,side:THREE.DoubleSide})
+  const inkPaper=new THREE.MeshStandardMaterial({map:paper,roughness:.94,side:THREE.DoubleSide,polygonOffset:true,polygonOffsetFactor:-2})
   const cloth=new THREE.MeshStandardMaterial({color:'#344a40',roughness:.9})
   const notebook=new THREE.Group();notebook.position.set(-.42,.687,2.44);notebook.rotation.y=-.11
   const cover=new THREE.Mesh(new THREE.BoxGeometry(.91,.014,.57),cloth);cover.castShadow=cover.receiveShadow=true;notebook.add(cover)
@@ -29,7 +31,7 @@ export function makeStudyCorner(time:THREE.IUniform<number>, day:THREE.IUniform<
     const geo=new THREE.PlaneGeometry(.44,.54,24,2);geo.rotateX(-Math.PI/2)
     const positions=geo.attributes.position
     for(let i=0;i<positions.count;i++){const x=positions.getX(i);positions.setY(i,.027+Math.sin((x/.44+.5)*Math.PI)*.018)}
-    geo.computeVertexNormals();const page=new THREE.Mesh(geo,inkPaper);page.position.x=side*.223;page.receiveShadow=true;notebook.add(page)
+    geo.computeVertexNormals();const page=new THREE.Mesh(geo,inkPaper);page.position.x=side*.223;page.receiveShadow=true;page.renderOrder=1;notebook.add(page)
   }
   group.add(notebook)
   const brass=new THREE.MeshStandardMaterial({color:'#b09a65',metalness:.78,roughness:.34})
