@@ -129,3 +129,10 @@
 }
 @media(max-width:380px){.session-card{width:170px}.landscape-console{left:12px;right:12px;padding:14px 13px 10px;gap:10px;grid-template-columns:minmax(0,1fr) 78px}.time-dial{width:73px;height:73px}.season-labels svg{display:none}.session-meta>span:last-child{letter-spacing:.2px}}
 @media(max-height:560px) and (min-width:761px){.topbar{top:16px}.session-card{top:69px;width:205px;padding:13px 16px 9px}.session-time{font-size:44px;margin:6px 0}.landscape-console{bottom:15px;padding:12px 20px}.time-dial{width:76px;height:76px}.season-status{margin-bottom:3px}.popover,.scene-forest .popover{bottom:15px;max-height:calc(100svh - 80px)}.exit-focus{bottom:15px}.session-card.is-focus{top:18px}}
+@media(min-width:761px){
+ .landscape-console{padding:12px 22px;grid-template-columns:minmax(0,1fr) 90px 162px;gap:20px}
+ .landscape-console .dial-wrap{padding-left:11px}.landscape-console .time-dial{width:70px;height:70px}
+ .landscape-console .dial-center{gap:2px}.landscape-console .dial-center time{font-size:13px}.landscape-console .dial-center>svg{width:10px;height:10px}
+ .landscape-console .dial-caption{font-size:8px}.landscape-console .season-status{margin-bottom:2px}
+ .landscape-console .console-actions{padding-left:18px;gap:9px}
+}

@@ -179,7 +179,7 @@ export class ForestWindow{
   groundColor.colorSpace=woodColor.colorSpace=THREE.SRGBColorSpace
   this.groundMaterial.map=groundColor;this.groundMaterial.normalMap=groundNormal;this.groundMaterial.normalScale.set(.9,.9);this.groundMaterial.aoMap=groundARM;this.groundMaterial.aoMapIntensity=1.15;this.groundMaterial.roughnessMap=groundARM;this.groundMaterial.bumpMap=groundHeight;this.groundMaterial.bumpScale=.026;this.groundMaterial.displacementMap=groundHeight;this.groundMaterial.displacementScale=.025;this.groundMaterial.displacementBias=-.012;this.groundMaterial.needsUpdate=true
   for(const t of [woodColor,woodNormal,woodRoughness]){t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(2.3,1.2)}
-  this.scene.traverse(o=>{if(o instanceof THREE.Mesh&&o.name==='desktop'){const m=o.material as THREE.MeshStandardMaterial;m.map=woodColor;m.normalMap=woodNormal;m.normalScale.set(.3,.3);m.roughnessMap=woodRoughness;m.needsUpdate=true}})
+  this.scene.traverse(o=>{if(o instanceof THREE.Mesh&&o.name==='desktop'){const m=o.material as THREE.MeshStandardMaterial;m.map=woodColor;m.normalMap=woodNormal;m.normalScale.set(.3,.3);m.roughnessMap=woodRoughness;m.roughness=.86;m.onBeforeCompile=s=>{s.fragmentShader=s.fragmentShader.replace('#include <roughnessmap_fragment>','#include <roughnessmap_fragment>\nroughnessFactor=max(.76,roughnessFactor);')};m.needsUpdate=true}})
   if(!this.mobile){
    const paths=['tree-bark-color-2k.jpg','tree-bark-normal-2k.jpg','tree-leaves-color-2k.jpg','tree-leaves-normal-2k.jpg']
    const high=await Promise.all(paths.map(p=>textureLoader.loadAsync(import.meta.env.BASE_URL+'assets/forest/high/'+p)))
@@ -275,7 +275,7 @@ export class ForestWindow{
   this.box(10,.018,.025,0,.685,2.0,frame)
   const book=makeBoundBook();book.group.position.set(-1.98,.682,2.62);book.group.rotation.y=.12;book.group.scale.setScalar(.9);this.scene.add(book.group);book.textures.forEach(t=>this.textures.add(t))
   this.studyCorner=makeStudyCorner(this.shared.time,this.shared.day);this.scene.add(this.studyCorner.group);this.studyCorner.textures.forEach(t=>this.textures.add(t))
-  const mug=new THREE.Group();mug.position.set(1.08,.68,2.64)
+  const mug=new THREE.Group();mug.position.set(1.08,.68,2.46)
   const ceramic=new THREE.MeshPhysicalMaterial({color:'#d3c8ac',roughness:.24,clearcoat:.3,clearcoatRoughness:.23})
   const body=new THREE.Mesh(new THREE.CylinderGeometry(.10,.085,.19,40,1,true),ceramic);body.position.y=.095;body.castShadow=true;mug.add(body)
   const inner=new THREE.Mesh(new THREE.CylinderGeometry(.091,.077,.17,40,1,true),ceramic);inner.position.y=.095;inner.material=ceramic.clone();inner.material.side=THREE.BackSide;mug.add(inner)
@@ -333,7 +333,7 @@ export class ForestWindow{
   this.moon.position.copy(moon).multiplyScalar(36).add(this.moon.target.position);this.moon.intensity=night*.10
   this.hemisphere.intensity=.64+day*(.16-wet*.14);this.hemisphere.color.set('#c3d0c1').lerp(new THREE.Color('#979eaf'),this.shared.season.value.w*.2).lerp(new THREE.Color('#9bb5d6'),night*.8).lerp(new THREE.Color('#9eafb3'),wet*.6)
   this.hemisphere.groundColor.set('#586053');this.roomFill.intensity=.32+night*1.45
-  if(this.studyCorner){this.studyCorner.light.intensity=4.5+night*4.5;this.studyCorner.bulbMaterial.emissiveIntensity=1.3+night*1.7}
+  if(this.studyCorner){this.studyCorner.light.intensity=1.7+night*1.1;this.studyCorner.bulbMaterial.emissiveIntensity=1.3+night*1.7}
   this.scene.environmentIntensity=.23+day*.41
   const fog=this.scene.fog as THREE.Fog;fog.color.copy(this.bgNight).lerp(this.bgDay,day);fog.far=155;this.airDensity.value=.0055+this.shared.season.value.w*.0025+wet*.0055
   this.life.update(state,wet,day,dt)
